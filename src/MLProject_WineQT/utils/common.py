@@ -5,13 +5,14 @@ from src.MLProject_WineQT.my_logging.loger import logger
 import json
 import joblib
 from ensure import ensure_annotations
-from box import config_box
+from box import ConfigBox
+
 from pathlib import Path
 from typing import Any
 
 
 @ensure_annotations
-def read_yaml(path_to_yaml:Path) -> config_box:
+def read_yaml(path_to_yaml:Path) -> ConfigBox:
     """
     reads your file returns
     
@@ -29,7 +30,7 @@ def read_yaml(path_to_yaml:Path) -> config_box:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
             logger.info(f"yaml file:{path_to_yaml} load successfuly")
-            return config_box(content)
+            return ConfigBox(content)
     except BoxValueError:
         raise ValueError('your file is empty')
     
