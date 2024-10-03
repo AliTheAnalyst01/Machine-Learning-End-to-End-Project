@@ -3,6 +3,7 @@ from box.exceptions import BoxValueError
 import yaml
 from src.MLProject_WineQT.my_logging.loger import logger
 import json
+import joblib
 from ensure import ensure_annotations
 from box import config_box
 from pathlib import Path
@@ -51,3 +52,46 @@ def create_directories(path_to_directories:list,verbose=True):
             logger.info(f"created directories at: {path}") 
             
 
+@ensure_annotations
+def save_json(path:Path,data:dict):
+    """save the json data
+    Args:
+    path (path):path to json file 
+    data(dict): data to be saved in json
+    
+    """
+    with open(path,'w') as f:
+        json.dump(data,f,indent=4)
+        logger.info(f"json file saved {path}")
+        
+        
+@ensure_annotations
+def save_bin(data:Any,path:Path):
+    """save binary file
+    Args:
+        data(Any): data to be saved as binary
+        path(path): path to any binary file 
+    """
+    
+    joblib.dump(value=data,filename=path)
+    logger.info(f"binary file saved at: {path}")
+    
+
+@ensure_annotations
+def load_bin(path:Path) -> Any:
+    """save binary file
+    Args:
+        data(Any): data to be saved as binary
+        path(path): path to any binary file 
+    """
+    
+    data=joblib.load(path)
+    logger.info(f"binary file loaded form at: {path}")
+    return data
+
+
+
+@ensure_annotations
+def get_size(path:Path) -> str:
+    size_in_kb=round(os.path.getsize(path))
+    return f"{size_in_kb} KB"
