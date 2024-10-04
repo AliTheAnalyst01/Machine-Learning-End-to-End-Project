@@ -10,9 +10,9 @@ density: float64
 pH: float64
 sulphates: float64
 alcohol : float64
-quality : int
+quality : int64
 
 
 
 TARGET_COLUMN:
-  name:quality 
+  name: quality 
