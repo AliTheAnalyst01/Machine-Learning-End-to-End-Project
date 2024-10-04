@@ -4,6 +4,7 @@ from pathlib import Path
 import urllib.request as request
 import zipfile
 from src.MLProject_WineQT.my_logging.loger import logger
+from src.MLProject_WineQT.utils.common import read_yaml, create_directories
 from src.MLProject_WineQT.utils.common import get_size
 from src.MLProject_WineQT.entity.config_entity import DataingestionConfig
 
