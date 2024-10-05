@@ -9,4 +9,4 @@ data_ingestion:
 data_validation:
   root_dir: artifacts/data_validation
   STATUS_FILE: artifacts/data_validation/status.txt
-  unzip_data_dir: artifacts/data_ingestion/unzipped_data/data.csv  # Ensure this matches the extracted file path
+  unzip_data_dir: artifacts/data_ingestion/unzipped_data/WineQT.csv # Ensure this matches the extracted file path
