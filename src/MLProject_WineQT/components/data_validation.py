@@ -21,12 +21,12 @@ class DataValidation:
                     validation_status=False
                     with open(self.config.STATUS_FILE,'w') as file:
                     
-                        file.write(f'data validation status {validation_status}')
+                        file.write(f'data validation status: {validation_status}')
                 else:
                     validation_status=True
                     with open(self.config.STATUS_FILE,'w') as file:
                     
-                        file.write(f'data validation status {validation_status}')
+                        file.write(f'data validation status: {validation_status}')
             return validation_status
         except Exception as e:
             raise e
