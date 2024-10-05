@@ -3,6 +3,7 @@ from MLProject_WineQT.pipeline.stage01_data_ingestion import DataIngestionTraini
 from MLProject_WineQT.pipeline.stage02_data_validation import DataValidationTrainingPipeline
 from MLProject_WineQT.pipeline.stage03_data_transformation import DataTransformationTrainingPipeline
 from MLProject_WineQT.pipeline.stage04_model_trainer import ModelTrainerTrainingPipeline
+from MLProject_WineQT.pipeline.stage05_model_evalution import ModelEvalutionTrainingPipeline
 
 STAGE_NAME = 'Data Ingestion Stage'
 
@@ -46,6 +47,20 @@ try:
         data_ingestion = ModelTrainerTrainingPipeline()
         data_ingestion.main()
         logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<<")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
+
+
+STAGE_NAME = "Model Evalution Stage"
+
+
+try:
+        logger.info(f">>>>>>> Stage {STAGE_NAME} <<<<<<< Started")
+        obj = ModelEvalutionTrainingPipeline()
+        obj.main()
+        logger.info(f">>>>>>> stage {STAGE_NAME} <<<<<<<<<< Completed \n\nx=================")
 except Exception as e:
         logger.exception(e)
         raise e

@@ -1,10 +1,11 @@
 # configuration Manager
 from src.MLProject_WineQT.constants.const import *
-from src.MLProject_WineQT.utils.common import read_yaml, create_directories
+from src.MLProject_WineQT.utils.common import read_yaml, create_directories, save_json
 from src.MLProject_WineQT.entity.config_entity import (DataingestionConfig,
                                                        DataValidationConfig,
                                                        DataTransformationConfig,
-                                                       ModelTrainerConfig)
+                                                       ModelTrainerConfig,
+                                                       ModelEvalutionConfig)
 
 
 class ConfigurationManager:
@@ -74,5 +75,28 @@ class ConfigurationManager:
 )
 
         return model_trainer_config
+    
+     def get_model_evalution_config(self) -> ModelEvalutionConfig:
+        config = self.config.model_evalution
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+        
+        create_directories([config.root_dir])
+        
+        
+        
+        model_evalution_config = ModelEvalutionConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path,
+            all_params=params,
+            metric_file_name=config.metric_file_name,
+            target_column=schema.name
+        )
+        return model_evalution_config
+
+
+
+
            
              

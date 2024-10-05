@@ -32,3 +32,14 @@ class ModelTrainerConfig:
     alpha: float
     l1_ratio: float
     target_column: str
+    
+    
+    
+@dataclass(frozen=True)
+class ModelEvalutionConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    all_params: dict
+    metric_file_name: str
+    target_column: str
