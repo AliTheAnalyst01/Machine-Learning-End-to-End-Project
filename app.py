@@ -6,9 +6,10 @@ from MLProject_WineQT.pipeline.prediction import PredictionPipeline
 
 app = Flask(__name__) # initialize the flask
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+
+app.route('/',methods=["GET"])
+def homePage():
+    return render_template("index.html")
 
 
 @app.route('/train',methods=['GET'])  # route to trian the pipeline
